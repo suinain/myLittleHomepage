@@ -8,6 +8,10 @@ public class Review {
 	private Date createdAt;
 	private String author;
 	
+	public Review(String title, String content,  String author ) {
+		this(title, content, new Date(), author);
+	}
+	
 	public Review(String title, String content, Date createdAt, String author) {
 		this.title = title;
 		this.content = content;

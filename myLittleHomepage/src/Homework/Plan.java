@@ -3,10 +3,14 @@ package Homework;
 import java.util.Date;
 
 public class Plan {
+	private int placeId;
 	private Date startDate;
 	private Date endDate;
-	private int placeId;
 
+	public Plan(int placeId) {
+		this(new Date(),new Date(),placeId); //선택하기 전 기본 날짜를 현재날짜로 초기화함
+	}
+	
 	public Plan(Date startDate, Date endDate, int placeId) {
 		this.startDate = startDate;
 		this.endDate = endDate;

@@ -5,6 +5,10 @@ public class Place {
 	private String placeName;
 	private String placeReview;
 	
+	public Place(int placeId, String placeName) {
+		this(placeId, placeName, "여행지정보가 없습니다");
+	}
+	
 	public Place(int placeId, String placeName, String placeReview) {
 		this.placeId = placeId;
 		this.placeName = placeName;

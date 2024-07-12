@@ -4,14 +4,37 @@ import java.util.Scanner;
 
 public class Main {
     static Member[] memberArr = new Member[100];
+    static Place[] placeArr = new Place[100];
+    static Plan[] planArr = new Plan[100];
+    static Review[] reviewArr = new Review[100];
+    
     static Scanner sc = new Scanner(System.in);
 
+    //미리 값을 할당하여 준비
     static {
         memberArr[0] = new Member("user1", "user11");
         memberArr[1] = new Member("user2", "user22");
         memberArr[2] = new Member("user3", "user33");
         memberArr[3] = new Member("user4", "user44");
         memberArr[4] = new Member("user5", "user55");
+        
+        placeArr[0] = new Place(1, "서울");
+        placeArr[1] = new Place(2, "인천");
+        placeArr[2] = new Place(3, "광주");
+        placeArr[3] = new Place(4, "대구");
+        placeArr[4] = new Place(5, "제주");
+        
+        planArr[0] = new Plan(1);
+        planArr[1] = new Plan(2);
+        planArr[2] = new Plan(3);
+        planArr[3] = new Plan(4);
+        planArr[4] = new Plan(5);
+              
+        reviewArr[0] = new Review("관광도시 제주", "친구들이랑 싸게 잘 놀다갔어요", "user1");
+        reviewArr[1] = new Review("서울 외곽에서 조용하게 보낸 여름휴가", "나홀로 여행", "user2");
+        reviewArr[2] = new Review("바다 보고 싶어서 인천 왔어요", "", "user3");
+        reviewArr[3] = new Review("소비의 도시 대구", "회사 사람들과 야유회를 갔다왔습니다", "user4");
+        reviewArr[4] = new Review("고향집에 오랜만에 들러서 힐링하고 가요", "늘 오늘처럼", "user5");
     }
 
     public static void main(String[] args) {
@@ -129,4 +152,5 @@ public class Main {
     public static void goodbye() {
         System.out.println("프로그램을 종료합니다");
     }
+    
 }
