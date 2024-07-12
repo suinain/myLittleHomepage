@@ -3,16 +3,18 @@ package Homework;
 import java.util.Date;
 
 public class Review {
+	private int placeNum;
 	private String title;
 	private String content;
 	private Date createdAt;
 	private String author;
 	
-	public Review(String title, String content,  String author ) {
-		this(title, content, new Date(), author);
+	public Review(int placeNum, String title, String content,  String author ) {
+		this(placeNum, title, content, new Date(), author);
 	}
 	
-	public Review(String title, String content, Date createdAt, String author) {
+	public Review(int placeNum, String title, String content, Date createdAt, String author) {
+		this.placeNum = placeNum;
 		this.title = title;
 		this.content = content;
 		this.createdAt = new Date();
@@ -42,6 +44,14 @@ public class Review {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public int getPlaceNum() {
+		return placeNum;
+	}
+
+	public void setPlaceNum(int placeNum) {
+		this.placeNum = placeNum;
 	}
 	
 	
