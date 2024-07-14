@@ -79,6 +79,8 @@ public class Main {
 							case 2:
 								System.out.println("일정추가");
 								addPlan();
+								showPlan();
+							//	continue; 안먹힘
 								break;
 							case 3:
 								System.out.println("일정삭제");
