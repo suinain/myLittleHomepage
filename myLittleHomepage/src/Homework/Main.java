@@ -1,12 +1,15 @@
 package Homework;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
 	static Member[] memberArr = new Member[100];
-	static Place[] placeArr = new Place[100];
+	static Place[] placeArr = new Place[1000];
 	static Plan[] planArr = new Plan[100];
-//	static Review[] reviewArr = new Review[100]; 
+	static Review[] reviewArr = new Review[1000];
 
 	static Scanner sc = new Scanner(System.in);
 	// 세션을 대신할 로그인 확인용 변수
@@ -29,16 +32,15 @@ public class Main {
 		placeArr[4] = new Place(5, "제주");
 
 		// 리뷰
-		// 리뷰를 한번에 출력하는 법?
-		Plan.Review review1 = new Plan.Review("관광도시 제주", "친구들이랑 싸게 잘 놀다갔어요", "user1");
-		Plan.Review review2 = new Plan.Review("서울 외곽에서 조용하게 보낸 여름휴가", "나홀로 여행", "user2");
-		Plan.Review review3 = new Plan.Review("바다 보고 싶어서 인천 왔어요", "예쁜 바다 색깔 멋지죠?", "user3");
-		Plan.Review review4 = new Plan.Review("소비의 도시 대구", "회사 사람들과 야유회를 갔다왔습니다", "user4");
-		Plan.Review review5 = new Plan.Review("고향집에 오랜만에 들러서 힐링하고 가요", "늘 오늘처럼", "user5");
-		Plan.Review review6 = new Plan.Review("계곡에서 수박먹으면서", "조카들이랑 찰칵", "user5");
-		Plan.Review review7 = new Plan.Review("대구 호텔에서", "오션뷰 호텔이 너무 멋있었어요", "user1");
-		Plan.Review review8 = new Plan.Review("해수욕장에서 한잔", "남친과 함께", "user3");
-		Plan.Review review9 = new Plan.Review("효도여행", "엄마아빠 사랑해요", "user4");
+		reviewArr[0] = new Review("관광도시 제주", "친구들이랑 싸게 잘 놀다갔어요", "user1");
+		reviewArr[1] = new Review("서울 외곽에서 조용하게 보낸 여름휴가", "나홀로 여행", "user2");
+		reviewArr[2] = new Review("바다 보고 싶어서 인천 왔어요", "예쁜 바다 색깔 멋지죠?", "user3");
+		reviewArr[3] = new Review("소비의 도시 대구", "회사 사람들과 야유회를 갔다왔습니다", "user4");
+		reviewArr[4] = new Review("고향집에 오랜만에 들러서 힐링하고 가요", "늘 오늘처럼", "user5");
+		reviewArr[5] = new Review("계곡에서 수박먹으면서", "조카들이랑 찰칵", "user5");
+		reviewArr[6] = new Review("대구 호텔에서", "오션뷰 호텔이 너무 멋있었어요", "user1");
+		reviewArr[7] = new Review("해수욕장에서 한잔", "남친과 함께", "user3");
+		reviewArr[8] = new Review("효도여행", "엄마아빠 사랑해요", "user4");
 	}
 
 	public static void main(String[] args) {
@@ -181,26 +183,49 @@ public class Main {
 
 	// 일정 보여주기
 	public static void showPlan() {
-
+		for (int i = 0; i < planArr.length; i++) {
+			if (planArr[i] != null) {
+				System.out.println(" 장소 번호 : " + planArr[i].getPlaceId() + 
+								   ", 일정 시작 : " + planArr[i].getStartDate() + 
+								   ", 일정 끝 : " + planArr[i].getEndDate());
+			}
+		}
 	}
 
 	// 일정 등록하기
 	public static void addPlan() {
+		System.out.println("*******일정 추가*******");
+		System.out.println("yyyy-MM-dd 형태로 입력해야합니다");
+		System.out.print("시작 날짜 : ");
+		String startDateStr = sc.next();
+		System.out.print("종료 날짜 : ");
+		String endDateStr = sc.next();
+		System.out.print("장소 ID: ");
+		int placeId = sc.nextInt();
 
-	}
-	
-	//일정 상세보기
-	public static void detailPlan() {
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			//날짜 객체로 문자열을 받아 변경
+			Date startDate = sdf.parse(startDateStr);
+			Date endDate = sdf.parse(endDateStr);
+
+			for (int i = 0; i < planArr.length; i++) {
+				if (planArr[i] == null) {
+					planArr[i] = new Plan(placeId, startDate, endDate);
+					System.out.println("일정이 등록되었습니다");
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("날짜 형식이 잘못되었습니다. 다시 시도해주세요.");
+		}
 	}
 
 	// 일정 수정하기
 	public static void editPlan() {
-
 	}
 
 	// 일정 삭제하기
 	public static void deltePlan() {
-
 	}
 }
