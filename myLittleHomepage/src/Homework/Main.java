@@ -227,6 +227,8 @@ public class Main {
 
 	// 일정 수정하기
 	public static void editPlan() {
+		showPlan();
+		
 	}
 
 	// 일정 삭제하기
