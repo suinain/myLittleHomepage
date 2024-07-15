@@ -69,7 +69,7 @@ public class Main {
 						case 1:
 							boolean planLoop = true;
 							//다시 돌아올 지점 세팅
-							out: while (planLoop) {
+							while (planLoop) {
 								System.out.println("일정관리 페이지입니다, 번호를 골라주세요");
 								System.out.println("**************************");
 								System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기"); //뒤로가기는 다른 방법으로 구현해보고 싶습니다
@@ -78,24 +78,25 @@ public class Main {
 								case 1:
 									System.out.println("일정보기");
 									showPlan();
-									continue out; 
+									continue; 
 								case 2:
 									System.out.println("일정추가");
 									addPlan();
 									showPlan();
-									continue out; 
+									
+									continue; 
 								case 3:
 									System.out.println("일정삭제");
 									deletePlan();
-									continue out; 
+									continue; 
 								case 4:
 									System.out.println("일정수정");
 									editPlan();
-									continue out; 
+									continue; 
 								case 5:
 									System.out.println("뒤로가기");
 									planLoop = false;
-									break;
+									continue;
 								}
 							}
 							break; 
