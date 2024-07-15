@@ -68,37 +68,37 @@ public class Main {
 						switch (secondMenu) {
 						case 1:
 							boolean planLoop = true;
-							while (planLoop) {
-
+							//다시 돌아올 지점 세팅
+							out: while (planLoop) {
 								System.out.println("일정관리 페이지입니다, 번호를 골라주세요");
 								System.out.println("**************************");
-								System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기");
+								System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기"); //뒤로가기는 다른 방법으로 구현해보고 싶습니다
 								int controllPlan = sc.nextInt();
 								switch (controllPlan) {
 								case 1:
 									System.out.println("일정보기");
 									showPlan();
-									break;
+									continue out; 
 								case 2:
 									System.out.println("일정추가");
 									addPlan();
 									showPlan();
-									// continue; 안먹힘
-									break;
+									continue out; 
 								case 3:
 									System.out.println("일정삭제");
-									deltePlan();
-									break;
+									deletePlan();
+									continue out; 
 								case 4:
 									System.out.println("일정수정");
 									editPlan();
-									break;
+									continue out; 
 								case 5:
 									System.out.println("뒤로가기");
 									planLoop = false;
+									break;
 								}
-								break;
 							}
+							break; 
 						case 2:
 							System.out.println("리뷰 페이지 입니다(구현중)");
 							break;
@@ -230,6 +230,6 @@ public class Main {
 	}
 
 	// 일정 삭제하기
-	public static void deltePlan() {
+	public static void deletePlan() {
 	}
 }
