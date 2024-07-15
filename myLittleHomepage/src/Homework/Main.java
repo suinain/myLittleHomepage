@@ -67,34 +67,38 @@ public class Main {
 						int secondMenu = sc.nextInt();
 						switch (secondMenu) {
 						case 1:
-							System.out.println("일정관리 페이지입니다, 번호를 골라주세요");
-							System.out.println("**************************");
-							System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기");
-							int controllPlan = sc.nextInt();
-							switch (controllPlan) {
-							case 1:
-								System.out.println("일정보기");
-								showPlan();
+							boolean planLoop = true;
+							while (planLoop) {
+
+								System.out.println("일정관리 페이지입니다, 번호를 골라주세요");
+								System.out.println("**************************");
+								System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기");
+								int controllPlan = sc.nextInt();
+								switch (controllPlan) {
+								case 1:
+									System.out.println("일정보기");
+									showPlan();
+									break;
+								case 2:
+									System.out.println("일정추가");
+									addPlan();
+									showPlan();
+									// continue; 안먹힘
+									break;
+								case 3:
+									System.out.println("일정삭제");
+									deltePlan();
+									break;
+								case 4:
+									System.out.println("일정수정");
+									editPlan();
+									break;
+								case 5:
+									System.out.println("뒤로가기");
+									planLoop = false;
+								}
 								break;
-							case 2:
-								System.out.println("일정추가");
-								addPlan();
-								showPlan();
-							//	continue; 안먹힘
-								break;
-							case 3:
-								System.out.println("일정삭제");
-								deltePlan();
-								break;
-							case 4:
-								System.out.println("일정수정");
-								editPlan();
-								break;
-							case 5:
-								System.out.println("뒤로가기");
-								continue;
 							}
-							break;
 						case 2:
 							System.out.println("리뷰 페이지 입니다(구현중)");
 							break;
@@ -185,11 +189,10 @@ public class Main {
 	// 일정 보여주기
 	public static void showPlan() {
 		for (int i = 0; i < planArr.length; i++) {
-			if (planArr[i] != null) {
-				System.out.println(" 장소 번호 : " + planArr[i].getPlaceId() + 
-								   ", 일정 시작 : " + planArr[i].getStartDate() + 
-								   ", 일정 끝 : " + planArr[i].getEndDate());
-			}
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			if (planArr[i] != null)
+				System.out.println(" 장소 번호 : " + planArr[i].getPlaceId() + ", 일정 시작 : "
+						+ sdf.format(planArr[i].getStartDate()) + ", \n 일정 끝 : " + sdf.format(planArr[i].getEndDate()));
 		}
 	}
 
@@ -206,7 +209,7 @@ public class Main {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			//날짜 객체로 문자열을 받아 변경
+			// 날짜 객체로 문자열을 받아 변경
 			Date startDate = sdf.parse(startDateStr);
 			Date endDate = sdf.parse(endDateStr);
 
