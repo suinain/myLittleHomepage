@@ -211,13 +211,17 @@ public class Main {
 
 	// 일정 보여주기
 	public static void showPlan() {
-		for (int i = 0; i < planArr.length; i++) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			if (planArr[i] != null)
-				System.out.println(" 장소 번호 : " + planArr[i].getPlaceId() + ", 일정 시작 : "
-						+ sdf.format(planArr[i].getStartDate()) + ", \n 일정 끝 : " + sdf.format(planArr[i].getEndDate()));
-		}
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+	    for (int i = 0; i < planArr.length; i++) {
+	        if (planArr[i] != null) {
+	            System.out.println((i+1) + " 장소 번호 : " + planArr[i].getPlaceId() + ", 일정 시작 : "
+	                    + sdf.format(planArr[i].getStartDate()) + ", 일정 끝 : " + sdf.format(planArr[i].getEndDate()));
+	        }
+	    }
+
 	}
+
 
 	// 일정 등록하기
 	public static void addPlan() {
