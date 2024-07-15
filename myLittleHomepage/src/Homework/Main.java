@@ -1,5 +1,6 @@
 package Homework;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -40,6 +41,27 @@ public class Main {
 		reviewArr[6] = new Review("대구 호텔에서", "오션뷰 호텔이 너무 멋있었어요", "user1");
 		reviewArr[7] = new Review("해수욕장에서 한잔", "남친과 함께", "user3");
 		reviewArr[8] = new Review("효도여행", "엄마아빠 사랑해요", "user4");
+		
+		//일정 - 날짜는 임의의 기본값을 줌
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+			planArr[0] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[1] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[2] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[3] = new Plan(4, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[4] = new Plan(2, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[5] = new Plan(2, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[6] = new Plan(4, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[7] = new Plan(5, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[8] = new Plan(5, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[9] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[10] = new Plan(2, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[11] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+			planArr[12] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -227,12 +249,54 @@ public class Main {
 	}
 
 	// 일정 수정하기
-	public static void editPlan() {
-		showPlan();
-		
-	}
+    public static void editPlan() {
+        System.out.println("*******일정 수정*******");
+        showPlan();
+        System.out.println("수정할 일정의 인덱스를 입력하세요: ");
+        int inum = sc.nextInt();
+        
+        if (planArr[inum] == null) {
+            System.out.println("잘못된 접근입니다.");
+            return; //아예 프로그램 끝내기
+        }
+
+        System.out.println("일정 수정을 시작하겠습니다");
+        System.out.println("yyyy-MM-dd 형태로 입력해야합니다");
+        System.out.print("새로운 시작 날짜 : ");
+        String startDateStr = sc.next();
+        System.out.print("새로운 종료 날짜 : ");
+        String endDateStr = sc.next();
+        System.out.print("새로운 장소 ID: ");
+        int placeId = sc.nextInt();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date startDate = sdf.parse(startDateStr);
+            Date endDate = sdf.parse(endDateStr);
+
+            planArr[inum].setPlaceId(placeId);
+            planArr[inum].setStartDate(startDate);
+            planArr[inum].setEndDate(endDate);
+            System.out.println("일정이 수정되었습니다");
+        } catch (Exception e) {
+            System.out.println("날짜 형식이 잘못되었습니다. 다시 시도해주세요.");
+        }
+    }
+
+
 
 	// 일정 삭제하기
-	public static void deletePlan() {
-	}
+    public static void deletePlan() {
+        System.out.println("*******일정 삭제*******");
+        showPlan();
+        System.out.println("삭제할 일정의 인덱스를 입력하세요: ");
+        int inum = sc.nextInt();
+        if (planArr[inum] == null) {
+            System.out.println("잘못된 접근입니다.");
+            return;
+        }
+        planArr[inum] = null;
+        System.out.println("일정이 삭제되었습니다.");
+    }
 }
+
