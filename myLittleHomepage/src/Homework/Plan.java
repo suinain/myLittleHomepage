@@ -1,6 +1,5 @@
 package Homework;
 
-import java.util.Arrays;
 import java.util.Date;
 
 public class Plan {

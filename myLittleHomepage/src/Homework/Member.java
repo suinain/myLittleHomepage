@@ -17,6 +17,9 @@ public class Member {
 		this.plans = plans;
 	}
 
+	public Member() {
+	}
+
 	public String getMemberId() {
 		return memberId;
 	}
@@ -40,5 +43,15 @@ public class Member {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	public Plan[] getPlans() {
+		return plans;
+	}
+
+	public void setPlans(Plan[] plans) {
+		this.plans = plans;
+	}
+	
+	
 
 }
