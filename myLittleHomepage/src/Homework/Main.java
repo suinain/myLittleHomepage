@@ -369,11 +369,15 @@ public class Main {
 
 	// 3.리뷰삭제
 	public static void deleteReview() {
-
+		showReview();
+		System.out.println("삭제할 인덱스를 눌러주세요");
+		int inum = sc.nextInt();
 	}
 
 	// 4.리뷰수정
 	public static void editReview() {
-
+		showReview();
+		System.out.println("수정할 인덱스를 눌러주세요");
+		int inum = sc.nextInt();
 	}
 }

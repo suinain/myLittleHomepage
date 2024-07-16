@@ -4,17 +4,17 @@ public class Member {
 	private String memberId;
 	private String memberPw;
 	private String nickname;
-	private Place[] places;
+	private Plan[] plans;
 
 	public Member(String memberId, String memberPw) {
-		this(memberId, memberPw, "신규", new Place[1000]);
+		this(memberId, memberPw, "신규", null);
 	}
 
-	public Member(String memberId, String memberPw, String nickname, Place[] places) {
+	public Member(String memberId, String memberPw, String nickname, Plan[] plans) {
 		this.memberId = memberId;
 		this.memberPw = memberPw;
 		this.nickname = nickname;
-		this.places = places;
+		this.plans = plans;
 	}
 
 	public String getMemberId() {

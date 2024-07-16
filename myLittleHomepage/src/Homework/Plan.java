@@ -7,12 +7,14 @@ public class Plan {
 	private int placeId;
 	private Date startDate;
 	private Date endDate;
+	private Review[] reviewArr;
 
 
-	public Plan(int placeId, Date startDate, Date endDate) {
+	public Plan(int placeId, Date startDate, Date endDate, Review[] reviewArr) {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.placeId = placeId;
+		this.reviewArr = reviewArr;
 	}
 
 	public Date getStartDate() {
