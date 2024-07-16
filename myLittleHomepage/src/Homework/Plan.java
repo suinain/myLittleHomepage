@@ -9,7 +9,9 @@ public class Plan {
 	private Date endDate;
 	private Review[] reviewArr;
 
-
+	public Plan(int placeId, Date startDate, Date endDate) {
+		this(placeId, startDate, endDate, null);
+	}
 	public Plan(int placeId, Date startDate, Date endDate, Review[] reviewArr) {
 		this.startDate = startDate;
 		this.endDate = endDate;

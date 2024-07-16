@@ -44,24 +44,7 @@ public class Main {
 
 		// 일정 - 날짜는 임의의 기본값을 줌
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			planArr[0] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[1] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[2] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[3] = new Plan(4, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[4] = new Plan(2, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[5] = new Plan(2, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[6] = new Plan(4, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[7] = new Plan(5, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[8] = new Plan(5, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[9] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[10] = new Plan(2, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[11] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-			planArr[12] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
+		
 	}
 
 	public static void main(String[] args) {
