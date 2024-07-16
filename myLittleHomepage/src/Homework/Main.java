@@ -31,16 +31,16 @@ public class Main {
         placeArr[4] = new Place(5, "제주");
 
         // 리뷰 - 배열안의 배열은 여러개라도 상관없다ㅠㅠ
-        placeArr[0].addReview(new Review("", "", "user1"));
-        placeArr[0].addReview(new Review("", "", "user2"));
-        placeArr[1].addReview(new Review("", "", "user3"));
-        placeArr[1].addReview(new Review("", "", "user4"));
-        placeArr[2].addReview(new Review("", "", "user5"));
-        placeArr[2].addReview(new Review("", "", "user1"));
-        placeArr[3].addReview(new Review("", "", "user2"));
-        placeArr[3].addReview(new Review("", "", "user3"));
-        placeArr[4].addReview(new Review("", "", "user4"));
-        placeArr[4].addReview(new Review("", "", "user5"));
+        placeArr[0].addReview(new Review("서울 외곽에서 조용하게 보낸 여름휴가", "나홀로 여행", "user1"));
+        placeArr[0].addReview(new Review("해수욕장에서 한잔", "남친과 함께", "user2"));
+        placeArr[1].addReview(new Review("바다 보고 싶어서 인천 왔어요", "예쁜 바다 색깔 멋지죠?", "user3"));
+        placeArr[1].addReview(new Review("친구들과 우정여행", "하트", "user4"));
+        placeArr[2].addReview(new Review("계곡에서 수박먹으면서", "조카들이랑 찰칵", "user5"));
+        placeArr[2].addReview(new Review("고향집에 오랜만에 들러서 힐링하고 가요", "늘 오늘처럼만", "user1"));
+        placeArr[3].addReview(new Review("대구 호텔에서", "오션뷰 호텔이 너무 멋있었어요", "user2"));
+        placeArr[3].addReview(new Review("소비의 도시 대구", "회사 사람들과 야유회를 갔다왔습니다", "user3"));
+        placeArr[4].addReview(new Review("효도여행", "엄마아빠 사랑해요", "user4"));
+        placeArr[4].addReview(new Review("관광도시 제주", "친구들이랑 싸게 잘 놀다갔어요", "user5"));
     }
 
     public static void main(String[] args) {
