@@ -8,6 +8,9 @@ public class Review {
     private Date createdAt;
     private String author;
 
+    public Review(String title, String content) {
+        this(title, content, new Date(), "익명의 작가");
+    }
     public Review(String title, String content, String author) {
         this(title, content, new Date(), author);
     }

@@ -41,10 +41,10 @@ public class Main {
 		reviewArr[6] = new Review("대구 호텔에서", "오션뷰 호텔이 너무 멋있었어요", "user1");
 		reviewArr[7] = new Review("해수욕장에서 한잔", "남친과 함께", "user3");
 		reviewArr[8] = new Review("효도여행", "엄마아빠 사랑해요", "user4");
-		
-		//일정 - 날짜는 임의의 기본값을 줌
+
+		// 일정 - 날짜는 임의의 기본값을 줌
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
+		try {
 			planArr[0] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
 			planArr[1] = new Plan(1, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
 			planArr[2] = new Plan(3, sdf.parse("1996-12-05"), sdf.parse("1996-12-05"));
@@ -90,40 +90,72 @@ public class Main {
 						switch (secondMenu) {
 						case 1:
 							boolean planLoop = true;
-							//다시 돌아올 지점 세팅
+							// 다시 돌아올 지점 세팅
 							while (planLoop) {
 								System.out.println("일정관리 페이지입니다, 번호를 골라주세요");
 								System.out.println("**************************");
-								System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기"); //뒤로가기는 다른 방법으로 구현해보고 싶습니다
+								System.out.println("1.일정보기 2.일정추가 3.일정삭제 4.일정수정 5.뒤로가기"); // 뒤로가기는 다른 방법으로 구현해보고 싶습니다
 								int controllPlan = sc.nextInt();
 								switch (controllPlan) {
 								case 1:
 									System.out.println("일정보기");
 									showPlan();
-									continue; 
+									continue;
 								case 2:
 									System.out.println("일정추가");
 									addPlan();
 									showPlan();
-									
-									continue; 
+
+									continue;
 								case 3:
 									System.out.println("일정삭제");
 									deletePlan();
-									continue; 
+									continue;
 								case 4:
 									System.out.println("일정수정");
 									editPlan();
-									continue; 
+									continue;
 								case 5:
 									System.out.println("뒤로가기");
 									planLoop = false;
 									continue;
 								}
 							}
-							break; 
+							break;
 						case 2:
-							System.out.println("리뷰 페이지 입니다(구현중)");
+							boolean reviewLoop = true;
+							while (reviewLoop) {
+
+								System.out.println("리뷰 페이지 입니다");
+								System.out.println("**********************");
+								System.out.println("번호를 눌러주세요");
+								System.out.println("1.리뷰보기 2.리뷰추가 3.리뷰삭제 4.리뷰수정 5.뒤로가기");
+								int slectReview = sc.nextInt();
+								switch (slectReview) {
+								case 1:
+									System.out.println("리뷰 보기");
+									showReview();
+									continue;
+								case 2:
+									System.out.println("리뷰 추가");
+									addReview();
+									continue;
+								case 3:
+									System.out.println("리뷰 삭제");
+									showReview();
+									deleteReview();
+									continue;
+								case 4:
+									System.out.println("리뷰 수정");
+									showReview();
+									editReview();
+									continue;
+								case 5:
+									System.out.println("뒤로가기");
+									reviewLoop = false;
+									continue;
+								}
+							}
 							break;
 						case 3:
 							goodbye();
@@ -211,17 +243,16 @@ public class Main {
 
 	// 일정 보여주기
 	public static void showPlan() {
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-	    for (int i = 0; i < planArr.length; i++) {
-	        if (planArr[i] != null) {
-	            System.out.println((i+1) + " 장소 번호 : " + planArr[i].getPlaceId() + ", 일정 시작 : "
-	                    + sdf.format(planArr[i].getStartDate()) + ", 일정 끝 : " + sdf.format(planArr[i].getEndDate()));
-	        }
-	    }
+		for (int i = 0; i < planArr.length; i++) {
+			if (planArr[i] != null) {
+				System.out.println((i + 1) + " 장소 번호 : " + planArr[i].getPlaceId() + ", 일정 시작 : "
+						+ sdf.format(planArr[i].getStartDate()) + ", 일정 끝 : " + sdf.format(planArr[i].getEndDate()));
+			}
+		}
 
 	}
-
 
 	// 일정 등록하기
 	public static void addPlan() {
@@ -253,54 +284,96 @@ public class Main {
 	}
 
 	// 일정 수정하기
-    public static void editPlan() {
-        System.out.println("*******일정 수정*******");
-        showPlan();
-        System.out.println("수정할 일정의 인덱스를 입력하세요: ");
-        int inum = sc.nextInt();
-        
-        if (planArr[inum] == null) {
-            System.out.println("잘못된 접근입니다.");
-            return; //아예 프로그램 끝내기
-        }
+	public static void editPlan() {
+		System.out.println("*******일정 수정*******");
+		showPlan();
+		System.out.println("수정할 일정의 인덱스를 입력하세요: ");
+		int inum = sc.nextInt();
 
-        System.out.println("일정 수정을 시작하겠습니다");
-        System.out.println("yyyy-MM-dd 형태로 입력해야합니다");
-        System.out.print("새로운 시작 날짜 : ");
-        String startDateStr = sc.next();
-        System.out.print("새로운 종료 날짜 : ");
-        String endDateStr = sc.next();
-        System.out.print("새로운 장소 ID: ");
-        int placeId = sc.nextInt();
+		if (planArr[inum] == null) {
+			System.out.println("잘못된 접근입니다.");
+			return; // 아예 프로그램 끝내기
+		}
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date startDate = sdf.parse(startDateStr);
-            Date endDate = sdf.parse(endDateStr);
+		System.out.println("일정 수정을 시작하겠습니다");
+		System.out.println("yyyy-MM-dd 형태로 입력해야합니다");
+		System.out.print("새로운 시작 날짜 : ");
+		String startDateStr = sc.next();
+		System.out.print("새로운 종료 날짜 : ");
+		String endDateStr = sc.next();
+		System.out.print("새로운 장소 ID: ");
+		int placeId = sc.nextInt();
 
-            planArr[inum].setPlaceId(placeId);
-            planArr[inum].setStartDate(startDate);
-            planArr[inum].setEndDate(endDate);
-            System.out.println("일정이 수정되었습니다");
-        } catch (Exception e) {
-            System.out.println("날짜 형식이 잘못되었습니다. 다시 시도해주세요.");
-        }
-    }
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date startDate = sdf.parse(startDateStr);
+			Date endDate = sdf.parse(endDateStr);
 
-
+			planArr[inum].setPlaceId(placeId);
+			planArr[inum].setStartDate(startDate);
+			planArr[inum].setEndDate(endDate);
+			System.out.println("일정이 수정되었습니다");
+		} catch (Exception e) {
+			System.out.println("날짜 형식이 잘못되었습니다. 다시 시도해주세요.");
+		}
+	}
 
 	// 일정 삭제하기
-    public static void deletePlan() {
-        System.out.println("*******일정 삭제*******");
-        showPlan();
-        System.out.println("삭제할 일정의 인덱스를 입력하세요: ");
-        int inum = sc.nextInt();
-        if (planArr[inum] == null) {
-            System.out.println("잘못된 접근입니다.");
-            return;
-        }
-        planArr[inum] = null;
-        System.out.println("일정이 삭제되었습니다.");
-    }
-}
+	public static void deletePlan() {
+		System.out.println("*******일정 삭제*******");
+		showPlan();
+		System.out.println("삭제할 일정의 인덱스를 입력하세요: ");
+		int inum = sc.nextInt();
+		if (planArr[inum] == null) {
+			System.out.println("잘못된 접근입니다.");
+			return;
+		}
+		planArr[inum] = null;
+		System.out.println("일정이 삭제되었습니다.");
+	}
 
+	// 1.리뷰보기
+	public static void showReview() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		for(int i = 0; i<reviewArr.length; i++) {
+			if(reviewArr[i] != null) {
+				System.out.println((i+1)+"[" + reviewArr[i].getTitle()+"]"
+						+ reviewArr[i].getContent() + "\t\t\t\t" 
+						+ sdf.format(reviewArr[i].getCreatedAt()) 
+						+ "\t\t\t" + reviewArr[i].getAuthor());
+			}
+		}
+	}
+
+	// 2.리뷰추가
+	public static void addReview() {
+	    sc.nextLine();  // 버퍼 비우기
+	    System.out.println("*******리뷰 추가*******");
+	    System.out.print("글 제목을 입력하세요 : ");
+	    String title = sc.nextLine();
+	    System.out.print("글 내용을 입력하세요 : ");
+	    String content = sc.nextLine();
+	    if (title != null && !title.isEmpty() && content != null && !content.isEmpty()) {
+	        for (int i = 0; i < reviewArr.length; i++) {
+	            if (reviewArr[i] == null) {
+	                reviewArr[i] = new Review(title, content, "user"); // 실제 로그인된 사용자로 변경 필요
+	                System.out.println("리뷰가 등록되었습니다");
+	                break;
+	            }
+	        }
+	    } else {
+	        System.out.println("제목과 내용을 모두 입력해야 합니다.");
+	    }
+	}
+
+
+	// 3.리뷰삭제
+	public static void deleteReview() {
+
+	}
+
+	// 4.리뷰수정
+	public static void editReview() {
+
+	}
+}
