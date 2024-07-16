@@ -1,5 +1,7 @@
 package Homework;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Plan {
@@ -12,6 +14,19 @@ public class Plan {
 		this.endDate = endDate;
 		this.placeId = placeId;
 
+	}
+
+	public Plan(int placeId, String startDateStr, String endDateStr) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		this.startDate = sdf.parse(startDateStr);
+		if (endDateStr != null) {
+			this.endDate = sdf.parse(endDateStr);
+			this.endDate = null;
+		} else {
+			this.endDate = null;
+		}
+
+		this.placeId = placeId;
 	}
 
 	public Date getStartDate() {
