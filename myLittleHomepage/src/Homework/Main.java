@@ -254,36 +254,40 @@ public class Main {
 		}
 	}
 
-	
 
 	// 일정 등록하기
-	public static void addPlan() {
-		System.out.println("*******일정 추가*******");
-		System.out.println("yyyy-MM-dd 형태로 입력해야합니다");
-		System.out.print("시작 날짜 : ");
-		String startDateStr = sc.next();
-		System.out.print("종료 날짜 : ");
-		String endDateStr = sc.next();
-		System.out.print("장소 ID: ");
-		int placeId = sc.nextInt();
+    public static void addPlan() {
+        System.out.println("*******일정 추가*******");
+        System.out.println("yyyy-MM-dd 형태로 입력해야합니다");
+        System.out.print("시작 날짜 : ");
+        String startDateStr = sc.next();
+        System.out.print("종료 날짜 : ");
+        String endDateStr = sc.next();
+        System.out.print("장소 ID: ");
+        int placeId = sc.nextInt();
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			// 날짜 객체로 문자열을 받아 변경
-			Date startDate = sdf.parse(startDateStr);
-			Date endDate = sdf.parse(endDateStr);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            // 날짜 객체로 문자열을 받아 변경
+            Date startDate = sdf.parse(startDateStr);
+            Date endDate = sdf.parse(endDateStr);
 
-			for (int i = 0; i < planArr.length; i++) {
-				if (planArr[i] == null) {
-					planArr[i] = new Plan(placeId, startDate, endDate);
-					System.out.println("일정이 등록되었습니다");
-					break;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("날짜 형식이 잘못되었습니다. 다시 시도해주세요.");
-		}
-	}
+            Plan newPlan = new Plan(placeId, startDate, endDate);
+
+            for (int i = 0; i < memberArr.length; i++) {
+                Member member = memberArr[i];
+                if (member != null && member.getMemberId().equals("로그인된 회원의 ID")) {
+                    member.addPlan(newPlan);
+                    System.out.println("일정이 등록되었습니다");
+                    break;
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("날짜 형식이 잘못되었습니다. 다시 시도해주세요.");
+        }
+    }
+
 
 	// 일정 수정하기
 	public static void editPlan() {
