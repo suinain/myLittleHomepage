@@ -243,7 +243,7 @@ public class Main {
 			Member member = memberArr[i]; //i번째 멤버 추출
 			if (member != null) { //멤버 있으면
 				Plan[] plans = member.getPlans(); //i번째 멤버의 일정들 배열에 저장
-				for (int k= 0; j < plans.length; k++) {
+				for (int k= 0; k < plans.length; k++) {
 					Plan plan = plans[k]; //k번째 일정 추출
 					if (plan != null) { //빈 배열 말고 값 할당된 것만 출력
 						System.out.println("회원 ID: " + member.getMemberId() + " 장소 번호: " + plan.getPlaceId() + ", 일정 시작: "
