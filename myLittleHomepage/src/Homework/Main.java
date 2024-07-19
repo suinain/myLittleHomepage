@@ -289,7 +289,7 @@ public class Main {
     public static void editPlan() {
         System.out.println("*******일정 수정*******");
         showPlan();
-        System.out.println("수정할 일정의 인덱스를 입력하세요: ");
+        System.out.println("수정할 일정의 인덱스를 입력하세요: "); //이게 불가능!
         int inum = sc.nextInt();
 
         if (planArr[inum] == null) {
