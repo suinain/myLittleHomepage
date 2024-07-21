@@ -5,6 +5,7 @@ public class Member {
     private String memberPw;
     private String nickname;
     private Plan[] planArr;
+    private int memberCount;
 
     public Member(String memberId, String memberPw) {
         this(memberId, memberPw, "신규", new Plan[100]); 
@@ -15,6 +16,7 @@ public class Member {
         this.memberPw = memberPw;
         this.nickname = nickname;
         this.planArr = planArr;
+        memberCount = 1;
     }
 
     public Member() {
@@ -62,4 +64,14 @@ public class Member {
         }
         System.out.println("더 이상 일정을 추가할 수 없습니다.");
     }
+
+	public int getMemberCount() {
+		return memberCount;
+	}
+
+	public void setMemberCount(int memberCount) {
+		this.memberCount = memberCount;
+	}
+    
+    
 }
