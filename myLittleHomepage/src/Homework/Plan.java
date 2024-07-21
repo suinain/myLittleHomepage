@@ -26,21 +26,6 @@ public class Plan {
         this.placeId = placeId;
     }
     
-    /*
-     * public Plan(int placeId, String startDateStr, String endDateStr) throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		this.startDate = sdf.parse(startDateStr);
-		if (endDateStr != null) {
-			this.endDate = sdf.parse(endDateStr);
-			this.endDate = null;
-		} else {
-			this.endDate = null;
-		}
-
-		this.placeId = placeId;
-	}
-     * 
-     * */
 
     public Date getStartDate() {
         return startDate;
